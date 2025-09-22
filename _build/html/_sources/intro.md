@@ -1,11 +1,6 @@
-# Welcome to your Jupyter Book
+# 컴퓨터 비전 
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
-
-Check out the content pages bundled with this sample book to see more.
+궁극적으로 Video 3D reconstruction 및 tracking을 공부하고 싶어서 기초 개념 공부를 위해 만든 책이다. 3D Gaussian Splatting 방법론 연구를 위한 기초를 쌓아나갈 예정이다. 최종 목표는 [논문](https://arxiv.org/pdf/2308.09713)을 읽고 관련 연구를 하는 것이다. 
 
 ```{tableofcontents}
 ```

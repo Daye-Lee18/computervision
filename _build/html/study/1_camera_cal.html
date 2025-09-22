@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Camera Calibration &#8212; My sample book</title>
+    <title>Chapter 1. Camera Calibration &#8212; My sample book</title>
   
   
   
@@ -57,10 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'study/1_camera_cal';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="../intro.html" />
+    <link rel="prev" title="컴퓨터 비전" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -152,8 +154,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+    <img src="../_static/logo.jpeg" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../_static/logo.jpeg" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
   
   
 </a></div>
@@ -174,12 +176,12 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Welcome to your Jupyter Book
+                    컴퓨터 비전
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Camera Calibration</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 1. Camera Calibration</a></li>
 </ul>
 
     </div>
@@ -352,7 +354,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -363,11 +367,23 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Camera Calibration</h1>
+    <h1>Chapter 1. Camera Calibration</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#camera-calibration">Camera Calibration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pinhole-camera-model">Pinhole Camera Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intrinsic-camera-parameters-k">Intrinsic camera parameters (K)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -377,8 +393,60 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="camera-calibration">
-<h1>Camera Calibration<a class="headerlink" href="#camera-calibration" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-1-camera-calibration">
+<h1>Chapter 1. Camera Calibration<a class="headerlink" href="#chapter-1-camera-calibration" title="Link to this heading">#</a></h1>
+<p>해당 챕터는 이 <a class="reference external" href="https://araintelligence.com/blogs/computer-vision/geometric-vision/camera_calibration">사이트</a>를 기반으로 만들었다. 개념은 최대한 간단히 하되, 연습 문제를 넣어서 문제를 통해 학습할 수 있도록 구성하였다.</p>
+<section id="camera-calibration">
+<h2>Camera Calibration<a class="headerlink" href="#camera-calibration" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>정의: 카메라의 instrinsic and extrinsic parameters를 결정하는 것</p></li>
+<li><p>효과: 이를 통해 pinhole camera로 찍힌 사진의 왜곡 (distortion)을 제거하도록 한다.</p></li>
+</ul>
+<p>그렇다면, instrinsic parameters란, 카메라 내부 특성들을 말한다. 예를 들어, focal length, its image center등이 있다. extrinsic parameters란 카메라 외적의 특성들 예를 들어, world frame내에서 translation and rotation 등을 의미한다.</p>
+<ul class="simple">
+<li><p>핀홀 카메라: 아주 작은 구멍 하나로 빛을 모아 이미지를 형성하는 가장 단순한 모델. 렌즈 없음</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">핀홀</span> <span class="pre">카메라</span> <span class="pre">모델</span></code>: 수학적으로는 3D 점을 2D 평면으로 사영(project)하는 <code class="docutils literal notranslate"><span class="pre">투영</span> <span class="pre">모델</span> <span class="pre">(perspective</span> <span class="pre">projection)</span></code>.</p></li>
+<li><p>사영 (projection): 3D를 2D로 옮기는 큰 틀의 개념</p></li>
+<li><p>투영 (perspective projection): 사영 (projection) 중 원근을 반영한 특수한 방식</p>
+<ul>
+<li><p>카메라 모델 (핀홀 카메라)의 방식으로 한 점 (카메라 중심, pinhole)을 기준으로 직선을 그어 평면에 교차시켜 대응시키는 방식.</p></li>
+</ul>
+</li>
+</ul>
+<p>수학적으로 투영 (원근 사영)은 다음과 같이 표현될 수 있다.</p>
+<div class="math notranslate nohighlight">
+\[(X, Y, Z) \mapsto \left( \frac{fX}{Z}, \frac{fY}{Z} \right)\]</div>
+<p>위 식에서 <code class="docutils literal notranslate"><span class="pre">f</span></code>는 <code class="docutils literal notranslate"><span class="pre">초점</span> <span class="pre">거리</span> <span class="pre">(focal</span> <span class="pre">length)</span></code>이다. 식을 보면 알 수 있듯, Z(깊이)가 커질수록 평면 위의 좌표가 작아진다. 멀리 있는 물체는 따라서 작아보인다.</p>
+<p>현대 카메라는 렌즈를 쓰지만, <strong>빛의 경로를 수학적으로 단순화했을 때 렌즈도 결국 “핀홀 투영 모델 + 왜곡 (distortion)”</strong> 으로 근사할 수 있다. 즉, 실제 렌즈의 복잡한 광학 현상을 그대로 설명하진 않지만, 현대 컴퓨터 비전에서 이미지를 형성하는 수학적 모델로 <strong>핀홀 모델</strong>을 기본으로 삼고, 그 위에 추가로 <strong>렌즈 왜곡 같은 보정항</strong>을 더해 사용한다. 핀홀 카메라 자체는 렌즈가 없지만, 오늘날의 영상화(imaging)를 설명할 때 쓰는 핀홀 카메라 모델은 렌즈 효과까지 반영한 확장된 모델이다.</p>
+</section>
+<section id="pinhole-camera-model">
+<h2>Pinhole Camera Model<a class="headerlink" href="#pinhole-camera-model" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pinhole</span> <span class="pre">camera</span> <span class="pre">model</span></code>은 3x4 matrix로 표현될 수 있다. 이 매트릭스는 <code class="docutils literal notranslate"><span class="pre">camera</span> <span class="pre">projection</span> <span class="pre">matrix</span></code>라고 불리며, 현실의 3D points를 2D image 상의 포인트로 변환하는 과정을 담고 있다.</p>
+<ul class="simple">
+<li><p>현실 카메라: 렌즈가 있어서 빛이 굴절되며 센서 위에 맺힘.</p></li>
+<li><p>핀홀 카메라 모델 (수학 모델): 렌즈를 무시하고, 대신 <strong>한 점(pinhole, 카메라 중심)</strong> 을 기준으로 광선을 그려서, 그 광선이 어떤 평면과 교차하는 점을 이미지로 본다고 “가정”한다.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">image</span> <span class="pre">plane</span></code>: 실제 센서 평면, 픽셀 배열이 존재하는 곳.</p>
+<ul>
+<li><p>좌표 단위 = pixel</p></li>
+<li><p>즉, focal plane 좌표를 다시 intrinsic parameters (focal length, principal point)로 변환해서 픽셀 좌표계로 옮긴 결과이다.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">focal</span> <span class="pre">plane</span></code>: 실제 물리적으로 초점 거리에 위치한 “가상 평면”. 카메라 좌표계를 3D → 2D로 사영할 때 기준이 되는 수학적 평면. 즉, 모델링/투영 수학직 세우려고 정의한 것으로 보이지 않는 가상 평면이다.</p>
+<ul>
+<li><p>카메라 좌표계의 z-축 방향으로 초점거리 f만큼 떨어진 위치에 있는 평면으로 정의</p></li>
+<li><p>좌표는 (x’, y’), 단위는 길이 (mm) 같은 물리 단위이다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>아래 이미지는 핀홀 카메라 모델을 보여준다. (아래 그림은 <a class="reference external" href="https://openmvg.readthedocs.io/en/latest/openMVG/cameras/cameras/">openvmg</a>의 그림을 참고하여 그렸다.)
+<img alt="1" src="../_images/1.png" /></p>
+<section id="intrinsic-camera-parameters-k">
+<h3>Intrinsic camera parameters (K)<a class="headerlink" href="#intrinsic-camera-parameters-k" title="Link to this heading">#</a></h3>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -417,7 +485,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        <p class="prev-next-title">컴퓨터 비전</p>
       </div>
     </a>
 </div>
@@ -426,6 +494,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#camera-calibration">Camera Calibration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pinhole-camera-model">Pinhole Camera Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intrinsic-camera-parameters-k">Intrinsic camera parameters (K)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
