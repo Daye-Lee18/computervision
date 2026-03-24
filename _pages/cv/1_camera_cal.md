@@ -38,7 +38,7 @@
     - 좌표는 (x', y'), 단위는 길이 (mm) 같은 물리 단위이다.  
 
 아래 이미지는 핀홀 카메라 모델을 보여준다. (아래 그림은 [openvmg](https://openmvg.readthedocs.io/en/latest/openMVG/cameras/cameras/)의 그림을 참고하여 그렸다.)
-![1](../assets/img/camera_cal/1.png)
+![1](../../assets/img/camera_cal/1.png)
 
 ### Intrinsic camera parameters (K)
 

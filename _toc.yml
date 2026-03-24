@@ -3,7 +3,16 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: study/1_camera_cal
+
+parts:
+- caption: Machine Learning for Visual Understanding 
+  chapters:
+  - file: _pages/vu/2_Image_Classification
+  - file: _pages/vu/3_loss_op
+  - file: _pages/vu/4_nn_backprob
+
+- caption: Computer vision 
+  chapters:
+  - file: _pages/cv/1_camera_cal
 # - file: notebooks
 # - file: markdown-notebooks

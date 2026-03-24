@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>컴퓨터 비전 &#8212; My sample book</title>
+    <title>2. First Approaches for Image Classification &#8212; My sample book</title>
   
   
   
@@ -18,51 +18,52 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. First Approaches for Image Classification" href="_pages/vu/2_Image_Classification.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = '_pages/vu/2_Image_Classification';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3. Loss Functions &amp; Optimization" href="3_loss_op.html" />
+    <link rel="prev" title="컴퓨터 비전" href="../../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -94,7 +95,7 @@
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="search.html"
+      action="../../search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -125,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -145,7 +144,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="../../intro.html">
   
   
   
@@ -156,8 +155,8 @@
       
     
     
-    <img src="_static/logo.jpeg" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="_static/logo.jpeg" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+    <img src="../../_static/logo.jpeg" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../../_static/logo.jpeg" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
   
   
 </a></div>
@@ -176,21 +175,21 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
                     컴퓨터 비전
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning for Visual Understanding</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="_pages/vu/2_Image_Classification.html">2. First Approaches for Image Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_pages/vu/3_loss_op.html">3. Loss Functions &amp; Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_pages/vu/4_nn_backprob.html">4. Neural Networks and Backpropagation</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. First Approaches for Image Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_loss_op.html">3. Loss Functions &amp; Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_nn_backprob.html">4. Neural Networks and Backpropagation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer vision</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="_pages/cv/1_camera_cal.html">Chapter 1. Camera Calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cv/1_camera_cal.html">Chapter 1. Camera Calibration</a></li>
 </ul>
 
     </div>
@@ -262,7 +261,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F_pages/vu/2_Image_Classification.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -292,7 +291,7 @@
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="../../_sources/_pages/vu/2_Image_Classification.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -374,7 +373,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>컴퓨터 비전</h1>
+    <h1>2. First Approaches for Image Classification</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -388,23 +387,56 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>컴퓨터 비전<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>궁극적으로 Video 3D reconstruction 및 tracking을 공부하고 싶어서 기초 개념 공부를 위해 만든 책이다. 3D Gaussian Splatting 방법론 연구를 위한 기초를 쌓아나갈 예정이다. 최종 목표는 <a class="reference external" href="https://arxiv.org/pdf/2308.09713">논문</a>을 읽고 관련 연구를 하는 것이다.</p>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning for Visual Understanding</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_pages/vu/2_Image_Classification.html">2. First Approaches for Image Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_pages/vu/3_loss_op.html">3. Loss Functions &amp; Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_pages/vu/4_nn_backprob.html">4. Neural Networks and Backpropagation</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer vision</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_pages/cv/1_camera_cal.html">Chapter 1. Camera Calibration</a></li>
-</ul>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="first-approaches-for-image-classification">
+<h1>2. First Approaches for Image Classification<a class="headerlink" href="#first-approaches-for-image-classification" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>테스크마다 데이터셋이 있을텐데 데이터셋의 특징을 구분하는 것이 중요하다. 예를 들어, 이미지 분류에서는 같은 Label에 대해서 deformation, illumination, clutter, occlusion의 이슈로 성능이 낮아질 수 있기 때문이다. 이 한계를 극복하기 위한 방법론 연구도 연구 주제로 이어질 수 있다.</p></li>
+<li><p>Classification은 query와 training data 속 value의 ‘similarity’를 계산하여 예측하는 과정이다.</p>
+<ol class="arabic simple">
+<li><p>Distance/similarity 계산 방식은 다양하게 존재.</p></li>
+</ol>
+</li>
+<li><p>K-nearest neighbor classifier: training data N개와 query의 similarity 비교 (inference complexity: O(N)) 후, the first largest similarity를 가진 K중 majority vote로 최종 classification.</p>
+<ol class="arabic simple">
+<li><p>장점: 구현이 간단함</p></li>
+<li><p>단점: inference 시간이 O(N)으로 크다.</p></li>
+<li><p>특징: K값을 키울수록 robust 해진다. k가 매우 작을수록 outlier 에 취약해진다.</p></li>
+</ol>
+</li>
+<li><p>Machine learning: data-driven approach, 사람의 개입을 최소화해서 컴퓨터가 데이터를 통해 특정 테스크를 잘 수행할 수 있도록 함.</p></li>
+<li><p>Machine learning에서 training이란, “데이터를 암기”하는 과정이다. 따라서, training data를 그냥 불러오는 것 자체도 암기를 다 했다고 가정하면, 이미 training 이 끝난 상태라고 할 수 있다. (Training time complexity O(1)). Deep learning에서는 space가 작은 곳에 embedding하는 encoder를 따로 만들어 데이터를 암기한다고 생각할 수 있겠다.</p></li>
+<li><p>Curse of dimensionality: 데이터의 dimension이 커진다면, 해당 공간을 같은 일정한 간격으로 ‘채우기’ 위해 필요한 데이터의 수는 “지수적 (exponentially)”으로 증가함.</p></li>
+<li><p>Parametric approach는 학습 시 특정 parameters (=weights) 를 가진 함수를 이용해 데이터를 암기하는 방법을 뜻한다.</p>
+<ol class="arabic simple">
+<li><p>장점: 학습 후에 training dataset을 몰라도, weights W matrix만 알면 된다. (Space efficient)</p></li>
+</ol>
+</li>
+<li><p>Linear Classifier: weighted sum of input pixels</p>
+<ol class="arabic simple">
+<li><p>(CIFAR10 데이터셋 가정) Classifier 모델의 각 weights matrix row (10개)가 각 class의 classifier = 유사도 계산 기계,</p></li>
+<li><p>각 클래스 이미지별 특징 필터라고 할 수 있다. 내적 유사도가 높으려면 같은 위치의 값은 비슷해서 내적값이 커져야 유사도가 커짐</p></li>
+</ol>
+</li>
+<li><p>Weights and bias: bias is affecting the output without interacting with data x</p></li>
+<li><p>Linear Classifier 모델의 해석</p>
+<ol class="arabic simple">
+<li><p>F = W<em>x W <span class="math notranslate nohighlight">\(\in\)</span> (10, 32</em>32<em>3 + 1), x <span class="math notranslate nohighlight">\(\in\)</span> (32</em>32*3)에서, 각 weights row는 각 class의 classifier 이다.</p>
+<ol class="arabic simple">
+<li><p>W의 크기 (output class의 크기, input 크기): transpose해서 dimension을 맞추면 되기 때문에 순서자체는 상관없다.</p></li>
+</ol>
+</li>
+<li><p>다시 한번, classfier는 similarity 계산한다.</p></li>
+<li><p>linear classifier는 dot product로 유사도를 계산하여 클래스를 구별하는데,</p>
+<ol class="arabic simple">
+<li><p>이 score (s) 값 자체는 우리가 해석하기 어렵다.</p></li>
+</ol>
+</li>
+<li><p>따라서, 값이 커야 해당 클래스로 분류되기 때문에, 각 classifier를 이미지로 변환해서 보면 각 클래스의 이미지 특징을 볼 수 있다.</p></li>
+<li><p>즉, classifier = 유사도 계산 기반 클래스 feature filter.</p></li>
+<li><p>각 class마다 classifier에 대입해서 나온 score가 같은 지점 = boundary</p></li>
+</ol>
+</li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">
@@ -420,7 +452,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./."
+            path: "./_pages/vu"
         },
         predefinedOutput: true
     }
@@ -437,12 +469,21 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">컴퓨터 비전</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="_pages/vu/2_Image_Classification.html"
+       href="3_loss_op.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">2. First Approaches for Image Classification</p>
+        <p class="prev-next-title">3. Loss Functions &amp; Optimization</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -496,8 +537,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
