@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4. Neural Networks and Backpropagation &#8212; My sample book</title>
+    <title>3. Neural Networks and Backpropagation &#8212; My sample book</title>
   
   
   
@@ -61,7 +61,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Chapter 1. Camera Calibration" href="../cv/1_camera_cal.html" />
-    <link rel="prev" title="3. Loss Functions &amp; Optimization" href="3_loss_op.html" />
+    <link rel="prev" title="2. Loss Functions &amp; Optimization" href="3_loss_op.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,15 +175,15 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    컴퓨터 비전
+                    컴퓨터 비전 & 딥러닝 스터디
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning for Visual Understanding</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="2_Image_Classification.html">2. First Approaches for Image Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_loss_op.html">3. Loss Functions &amp; Optimization</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Neural Networks and Backpropagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_Image_Classification.html">1. First Approaches for Image Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_loss_op.html">2. Loss Functions &amp; Optimization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Neural Networks and Backpropagation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer vision</span></p>
 <ul class="nav bd-sidenav">
@@ -371,7 +371,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>4. Neural Networks and Backpropagation</h1>
+    <h1>Neural Networks and Backpropagation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -386,7 +386,57 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="neural-networks-and-backpropagation">
-<h1>4. Neural Networks and Backpropagation<a class="headerlink" href="#neural-networks-and-backpropagation" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">3. </span>Neural Networks and Backpropagation<a class="headerlink" href="#neural-networks-and-backpropagation" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Linear classifier issues: one template for each class (visually), linear boundaries (geographically) -&gt; not useful with complex data</p>
+<ul>
+<li><p>dimension expansion: linear classifier가 있는데, 데이터가 liear boundary로 분류할 수 없을 경우에는, feature space dim을 높이면 데이터를 분리할 수 있다.</p>
+<ul>
+<li><p>극단적으로는 데이터개수만큼 확장하면 모든 데이터가 분류될 것이다.</p></li>
+<li><p>예를 들어, imaginary number의 polar -&gt; euler formula로 변환시켜서 데이터를 분리시킬 수 있고, 그 과정에서 데이터에 대한 손실된 정보는 없다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Feautures: input-ouput을 직접적으로 연결시키지 않고 주로 높은 차원으로 보낸뒤에 representation</p>
+<ul>
+<li><p>보통, 극단적으로 n개 만큼의 dimension으로 안 보내도 특정 패턴이 있으면 어느 정도 크기에서 separable가능하게 된다.</p></li>
+<li><p>이미지 데이터; 원본 데이터의 dim이 기본적으로 커서 피처를 뽑은때 dimension을 오히려 줄인다.</p></li>
+</ul>
+</li>
+<li><p>Image clasifiwe with pre-extracted feautres</p>
+<ul>
+<li><p>원래 전통방식에서는 이미지 feature extractiom은 사람의 intuition으로 뽑고 그 feature와 클래스를 맵핑(학습)하는 방식인데, end-to-end 인공지능은 이 모든 과정을 컴퓨터가 하게한다.</p></li>
+<li><p>문제는 그래서 인간의 개입을 최소화 하기 때문에, 어떤걸 발견했는지 설명하기 어려울 때가 있다. 성능은 잘 나오지만.</p></li>
+<li><p>따라서, data-driven approach방식을 취하는 딥러닝이라도,</p>
+<ul>
+<li><p>기존에 쌓아온 도메인 지식을 적극적으로 활용해서 적은 데이터로도 학습할 수 있도록 하는 것도 좋다</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>XOR problem: ‘여러개의’ perceptron layer( f(wx), 여기서 f는 activation fn) 으로 풀 수 있다. 힐튼 박사.</p></li>
+<li><p>Activation fn : 멀티레이어 쌓을때 중간에 activation fn을 사용하지 않으면 하나의 레이어나 다름 없기 때문에, 복잡한 문제를 풀기위해선 (예를 들어 xor이상의 ) nonlinear fn을 계속 사용해줘야함 -&gt; 또 다른 역할이 있나?</p></li>
+<li><p>Computing gradients: loss -&gt; w_n …. , chain rule 이용</p></li>
+<li><p>Backprop: 각 파라미터들의 기여도 계산</p>
+<ul>
+<li><p>에시) logistics Regression = linear perceptron + Sigmoid (이진 분류에 사용됨)</p></li>
+<li><p>뒤에서부터 계산하는 이유: loss에서 가까운 쪽부터 계산해야하니까. 실제 그래디언트 계산 upstream gradient는 항상 처음엔 1이라 계산 먼저</p></li>
+<li><p>각 노드에서 계산</p>
+<ul>
+<li><p>upstream 을 받고 local gradient를 계산해서 그 둘을 곱해서 앞으로 보낸다.</p></li>
+<li><p>체크! Gradient at the same edge (노드) == original upstream gradients == downstream gradient Dimension the same</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Backprop with vector and matrix</p>
+<ul>
+<li><p>Upstream / downstream은 forward pass에서의 해당 지점에서의 Dim과 동일한 dim을 가짐.</p></li>
+<li><p>local gradient는 upstream과 downstream의 dim을 곱하면 된다.</p></li>
+</ul>
+</li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -425,7 +475,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">3. Loss Functions &amp; Optimization</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Loss Functions &amp; Optimization</p>
       </div>
     </a>
     <a class="right-next"

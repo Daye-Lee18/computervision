@@ -6,10 +6,12 @@ root: intro
 
 parts:
 - caption: Machine Learning for Visual Understanding 
+  numbered: True 
   chapters:
   - file: _pages/vu/2_Image_Classification
   - file: _pages/vu/3_loss_op
   - file: _pages/vu/4_nn_backprob
+  - file: _pages/vu/5_CNN
 
 - caption: Computer vision 
   chapters:
