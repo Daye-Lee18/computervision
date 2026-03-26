@@ -1,4 +1,4 @@
-# 2. First Approaches for Image Classification 
+# First Approaches for Image Classification 
 
 1. 테스크마다 데이터셋이 있을텐데 데이터셋의 특징을 구분하는 것이 중요하다. 예를 들어, 이미지 분류에서는 같은 Label에 대해서 deformation, illumination, clutter, occlusion의 이슈로 성능이 낮아질 수 있기 때문이다. 이 한계를 극복하기 위한 방법론 연구도 연구 주제로 이어질 수 있다. 
 2. Classification은 query와 training data 속 value의 ‘similarity’를 계산하여 예측하는 과정이다. 
